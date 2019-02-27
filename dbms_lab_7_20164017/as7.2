@@ -1,0 +1,17 @@
+set serveroutput on;
+create table area2
+(Radius number(3) not null,
+Area number(7,2) not null
+);
+declare
+rad number(3);
+ar number(7,2);
+begin
+for rad in 3..7
+loop
+ar:=3.14*rad*rad;
+insert into area2 values(rad,ar);
+end loop;
+end;
+/
+select * from area2;

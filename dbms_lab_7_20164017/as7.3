@@ -1,0 +1,24 @@
+set serveroutput on;
+create table Account_Master(
+acct_no number(5) primary key,
+acct_holder_name varchar2(10),
+balance number(10)
+);
+insert into Account_Master values(1,'John',1000);
+insert into Account_Master values(2,'Denis',100);
+insert into Account_Master values(3,'Albert',1100);
+insert into Account_Master values(4,'Charles',700);
+insert into Account_Master values(5,'Darwin',1700);
+declare
+j number(10);
+a number(5);
+begin
+a:=&a;
+select balance into j from Account_Master where acct_no=a;
+if j<1000 then
+j:=j-100;
+end if;
+update Account_Master set balance=j where acct_no=a;
+end;
+/
+select * from Account_Master;
